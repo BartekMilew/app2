@@ -41,10 +41,16 @@ function App() {
 
   return (
     <div className="App">
-      <p>App2 - updated</p>
+      <p>App2 - updated ver2</p>
 
       <button onClick={setIndexDb}>setIndexDb</button>
       <button onClick={getIndexDb}>getIndexDb</button>
+      <button onClick={() => localStorage.setItem("user", "one")}>
+        setoLocal
+      </button>
+      <button onClick={() => console.log(localStorage.getItem("user"))}>
+        getLocalstorage
+      </button>
     </div>
   );
 }
