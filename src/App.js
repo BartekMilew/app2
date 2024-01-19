@@ -1,14 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { useEffect } from "react";
 function App() {
-  const handleSetCookie = () => {
-    document.cookie = "myCookie=myValue; samesite=None; secure";
-  };
-  const getCookie = () => {
-    console.log(document.cookie);
-  };
-
   const getIndexDb = (db) => {
     const openRequest = indexedDB.open("myDatabase", 2);
     openRequest.onsuccess = (e) => {
@@ -50,9 +41,8 @@ function App() {
 
   return (
     <div className="App">
-      <p>app2</p>
-      <button onClick={handleSetCookie}>setCookie</button>
-      <button onClick={getCookie}>getCookie</button>
+      <p>App2 - updated</p>
+
       <button onClick={setIndexDb}>setIndexDb</button>
       <button onClick={getIndexDb}>getIndexDb</button>
     </div>
