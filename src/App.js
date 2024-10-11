@@ -50,8 +50,8 @@ function App() {
         value={dbIndex}
         onChange={(e) => setDbIndex(e.target.value)}
       />
-      <button onClick={() => setIndexDb(dbIndex)}>setIndexDb</button>
-      <button onClick={() => getIndexDb(dbIndex)}>getIndexDb</button>
+      <button onClick={() => setIndexDb(dbIndex)}>setIndexDb_</button>
+      <button onClick={() => getIndexDb(dbIndex)}>getIndexDb_</button>
     </div>
   );
 }
