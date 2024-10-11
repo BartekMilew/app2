@@ -1,7 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 function App() {
-  const getIndexDb = (db) => {
-    const openRequest = indexedDB.open("myDatabase", 2);
+  const [dbIndex, setDbIndex] = useState(1);
+  const getIndexDb = (indexDB) => {
+    const openRequest = indexedDB.open(indexDB, 1);
     openRequest.onsuccess = (e) => {
       const db = e.target.result;
       const transaction = db.transaction(["customers"], "readonly");
@@ -9,6 +11,7 @@ function App() {
       const getAllRequest = objectStore.getAll();
 
       getAllRequest.onsuccess = function (event) {
+        alert(JSON.stringify(event.target.result));
         console.log(event.target.result);
       };
 
@@ -18,10 +21,10 @@ function App() {
     };
   };
 
-  const setIndexDb = () => {
+  const setIndexDb = (indexDB) => {
     const newItem = { ssn: "1", name: "New Item", description: "Description" };
 
-    const request = indexedDB.open("myDatabase", 2);
+    const request = indexedDB.open(indexDB, 1);
 
     request.onupgradeneeded = function (event) {
       const db = event.target.result;
@@ -41,16 +44,14 @@ function App() {
 
   return (
     <div className="App">
-      <p>App2 - updated ver2</p>
-
-      <button onClick={setIndexDb}>setIndexDb</button>
-      <button onClick={getIndexDb}>getIndexDb</button>
-      <button onClick={() => localStorage.setItem("user", "one")}>
-        setoLocal
-      </button>
-      <button onClick={() => console.log(localStorage.getItem("user"))}>
-        getLocalstorage
-      </button>
+      <p>indexDB</p>
+      <input
+        type="text"
+        value={dbIndex}
+        onChange={(e) => setDbIndex(e.target.value)}
+      />
+      <button onClick={() => setIndexDb(dbIndex)}>setIndexDb</button>
+      <button onClick={() => getIndexDb(dbIndex)}>getIndexDb</button>
     </div>
   );
 }
