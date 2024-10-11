@@ -11,7 +11,7 @@ function App() {
       const getAllRequest = objectStore.getAll();
 
       getAllRequest.onsuccess = function (event) {
-        alert(`${JSON.stringify(event.target.result)},dbIndex:${dbIndex}`);
+        alert(`dbIndex:${dbIndex}`);
         console.log(event.target.result);
       };
 
